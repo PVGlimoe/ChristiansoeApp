@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageViewBoard4"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="1dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBoard1"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/imageViewBoard9"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toEndOf="@+id/imageViewBoard8"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBoard6"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/imageViewBoard5"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toEndOf="@+id/imageViewBoard4"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBoard2"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/imageViewBoard6"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toEndOf="@+id/imageViewBoard5"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBoard3"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/imageViewBoard8"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toEndOf="@+id/imageViewBoard7"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBoard5"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/imageViewBoard7"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="1dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBoard4"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Animal Bingo"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewBoard1"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="50dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/imageViewBoard2"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="50dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toEndOf="@+id/imageViewBoard1"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/imageViewBoard3"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="50dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toEndOf="@+id/imageViewBoard2"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:srcCompat="@tools:sample/avatars" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
