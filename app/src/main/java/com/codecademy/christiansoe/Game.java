@@ -8,10 +8,12 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,6 +26,7 @@ public class Game extends AppCompatActivity {
 
     private BingoBoard bingoBoard;
     private TextView bingoBoardTextView;
+    private List<Field> fieldList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,8 @@ public class Game extends AppCompatActivity {
 
         Call<List<Field>> call = backendAPI.getFields(bingoBoard.getId());
 
+
+
         call.enqueue(new Callback<List<Field>>() {
             @Override
             public void onResponse(Call<List<Field>> call, Response<List<Field>> response) {
@@ -56,6 +61,7 @@ public class Game extends AppCompatActivity {
                 }
 
                 List<Field> fields = response.body();
+                fieldList = response.body();
 
                 int counter = 1;
                 for(Field field : fields){
@@ -73,28 +79,49 @@ public class Game extends AppCompatActivity {
             }
         });
     }
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
+//    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+//        ImageView bmImage;
+//
+//        public DownloadImageTask(ImageView bmImage) {
+//            this.bmImage = bmImage;
+//        }
+//
+//        protected Bitmap doInBackground(String... urls) {
+//            String urldisplay = urls[0];
+//            Bitmap mIcon11 = null;
+//            try {
+//                InputStream in = new java.net.URL(urldisplay).openStream();
+//                mIcon11 = BitmapFactory.decodeStream(in);
+//            } catch (Exception e) {
+//                Log.e("Error", e.getMessage());
+//                e.printStackTrace();
+//            }
+//            return mIcon11;
+//        }
+//
+//        protected void onPostExecute(Bitmap result) {
+//            bmImage.setImageBitmap(result);
+//        }
+//    }
 
-        public DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
-        }
+    public void showFieldInfo(View view){
 
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap mIcon11 = null;
-            try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                mIcon11 = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
+        int imageIndex = 0;
+
+        int clickedId = view.getId();
+        for(int i = 1; i < 10; i++){
+            int imageId = getResources().getIdentifier("imageViewBoard"+i, "id", getPackageName());
+
+            if(clickedId == imageId){
+                imageIndex = i - 1;
             }
-            return mIcon11;
         }
 
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
-        }
+        Field clickedField = fieldList.get(imageIndex);
+
+
+        Intent intent = new Intent(this, FieldInformation.class);
+        intent.putExtra("clickedField", clickedField);
+        startActivity(intent);
     }
 }
