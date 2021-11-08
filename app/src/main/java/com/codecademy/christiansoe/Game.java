@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.io.InputStream;
 import java.util.List;
@@ -22,6 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Game extends AppCompatActivity {
 
     private BingoBoard bingoBoard;
+    private TextView bingoBoardTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,10 @@ public class Game extends AppCompatActivity {
 
         Intent intent = getIntent();
         bingoBoard = (BingoBoard) intent.getSerializableExtra("chosenBingoBoard");
+
+        bingoBoardTextView = findViewById(R.id.bingoBoardTextView);
+        String name = bingoBoard.getName();
+        bingoBoardTextView.setText(name);
 
 
         Retrofit retrofit = new Retrofit.Builder()

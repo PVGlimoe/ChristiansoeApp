@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/christiansoe_background_pic" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/bingoBoardTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"

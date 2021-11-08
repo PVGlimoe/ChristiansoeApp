@@ -73,7 +73,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/bingoBoardTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -91,7 +91,7 @@
         android:layout_marginTop="50dp"
         android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/bingoBoardTextView"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
@@ -102,7 +102,7 @@
         android:layout_marginTop="50dp"
         android:scaleType="fitXY"
         app:layout_constraintStart_toEndOf="@+id/imageViewBoard1"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/bingoBoardTextView"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
@@ -113,7 +113,7 @@
         android:layout_marginTop="50dp"
         android:scaleType="fitXY"
         app:layout_constraintStart_toEndOf="@+id/imageViewBoard2"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/bingoBoardTextView"
         tools:srcCompat="@tools:sample/avatars" />
 
 

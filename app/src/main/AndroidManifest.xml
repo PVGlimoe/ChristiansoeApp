@@ -3,6 +3,7 @@
     package="com.codecademy.christiansoe">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,18 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Christiansoe">
         <activity
+            android:name=".FieldInformation"
+            android:exported="true" />
+        <activity
             android:name=".Theme"
             android:exported="true"
-            android:label="Tema"/>
-
+            android:label="Tema" />
         <activity
             android:name=".Game"
             android:exported="true"
-            android:label="Tag dig en spiller"/>
+            android:label="Tag dig en spiller" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
