@@ -1,4 +1,4 @@
-package com.codecademy.christiansoe;
+package com.codecademy.christiansoe.helper;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

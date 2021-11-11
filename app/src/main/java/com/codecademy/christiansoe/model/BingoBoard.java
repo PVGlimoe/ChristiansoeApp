@@ -1,4 +1,4 @@
-package com.codecademy.christiansoe;
+package com.codecademy.christiansoe.model;
 
 import com.google.gson.annotations.SerializedName;
 

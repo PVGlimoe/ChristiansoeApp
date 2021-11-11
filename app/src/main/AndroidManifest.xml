@@ -12,18 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Christiansoe">
         <activity
-            android:name=".FieldInformation"
+            android:name=".activity.FieldInformation"
             android:exported="true" />
         <activity
-            android:name=".Theme"
+            android:name=".activity.Theme"
             android:exported="true"
             android:label="Tema" />
         <activity
-            android:name=".Game"
+            android:name=".activity.Game"
             android:exported="true"
             android:label="Tag dig en spiller" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

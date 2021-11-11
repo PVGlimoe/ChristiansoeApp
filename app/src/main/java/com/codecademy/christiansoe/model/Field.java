@@ -1,4 +1,4 @@
-package com.codecademy.christiansoe;
+package com.codecademy.christiansoe.model;
 
 import java.io.Serializable;
 

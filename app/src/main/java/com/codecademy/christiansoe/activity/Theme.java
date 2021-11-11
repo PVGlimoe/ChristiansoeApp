@@ -1,13 +1,17 @@
-package com.codecademy.christiansoe;
+package com.codecademy.christiansoe.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
-import java.util.ArrayList;
+import com.codecademy.christiansoe.helper.BackendAPI;
+import com.codecademy.christiansoe.R;
+import com.codecademy.christiansoe.activity.Game;
+import com.codecademy.christiansoe.helper.RetrofitInitializer;
+import com.codecademy.christiansoe.model.BingoBoard;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -19,20 +23,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Theme extends AppCompatActivity {
 
     private BingoBoard chosenBingoBoard;
+    private RetrofitInitializer retrofitInitializer = new RetrofitInitializer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_theme);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://christiansoeapi.azurewebsites.net/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        BackendAPI backendAPI = retrofit.create(BackendAPI.class);
-
-        Call<List<BingoBoard>> call = backendAPI.getBingoBoards();
+        Call<List<BingoBoard>> call = retrofitInitializer.getBingoBoards();
 
         call.enqueue(new Callback<List<BingoBoard>>() {
             @Override

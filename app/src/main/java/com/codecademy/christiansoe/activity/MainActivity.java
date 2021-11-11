@@ -1,14 +1,12 @@
-package com.codecademy.christiansoe;
+package com.codecademy.christiansoe.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.widget.EditText;
 
-import java.util.Objects;
+import com.codecademy.christiansoe.R;
 
 public class MainActivity extends AppCompatActivity {
 
