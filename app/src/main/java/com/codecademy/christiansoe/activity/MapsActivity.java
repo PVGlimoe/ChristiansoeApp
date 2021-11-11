@@ -2,9 +2,16 @@ package com.codecademy.christiansoe.activity;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import com.codecademy.christiansoe.R;
+import com.codecademy.christiansoe.helper.DownloadImageTask;
+import com.codecademy.christiansoe.helper.RetrofitInitializer;
+import com.codecademy.christiansoe.model.Field;
+import com.codecademy.christiansoe.model.Map;
+import com.codecademy.christiansoe.model.Point;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -12,11 +19,21 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.codecademy.christiansoe.databinding.ActivityMapsBinding;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
+    private RetrofitInitializer retrofitInitializer = new RetrofitInitializer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,22 +48,48 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        List<LatLng> route = new ArrayList<>();
+
+        Call<Map> call = retrofitInitializer.getMaps();
+
+        call.enqueue(new Callback<Map>() {
+            @Override
+            public void onResponse(Call<Map> call, Response<Map> response) {
+
+                if (!response.isSuccessful()) {
+                    return;
+                }
+                //Looping over the fields, and uses the helper class DownloadImageTask to "draw" the pictures.
+                Map map = new Map();
+                map = response.body();
+
+                List<Point> pointList = map.getPoints();
+
+                for (Point p : pointList) {
+                    route.add(new LatLng(p.getLatitude(), p.getLongitude()));
+                }
+
+                drawRoute(route);
+            }
+
+            @Override
+            public void onFailure(Call<Map> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+    public void drawRoute(List<LatLng> route){
+
+        mMap.addPolyline(new PolylineOptions().addAll(route).width(5).color(Color.RED));
+        LatLng startPos = new LatLng(route.get(0).latitude, route.get(0).longitude);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(startPos, 17.5f));
+
     }
 }
