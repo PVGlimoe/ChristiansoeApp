@@ -42,7 +42,7 @@ public class Theme extends AppCompatActivity {
                 List<BingoBoard> bingoBoards = response.body();
 
                 //TO-DO Få fat i det valgte BingoBoard's id og sæt til chosenBingoBoard.
-                chosenBingoBoard = bingoBoards.get(0);
+                chosenBingoBoard = bingoBoards.get(3);
             }
 
             @Override
