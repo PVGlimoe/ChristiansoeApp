@@ -9,6 +9,8 @@ public class Field implements Serializable {
     private String description;
     private String pictureUrl;
     private String soundUrl;
+    private boolean isMarked;
+    private int position;
 
 
     public int getId() {
@@ -31,4 +33,19 @@ public class Field implements Serializable {
         return soundUrl;
     }
 
+    public boolean isMarked() {
+        return isMarked;
+    }
+
+    public void setMarked(boolean marked) {
+        isMarked = marked;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
 }

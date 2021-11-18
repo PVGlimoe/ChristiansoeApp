@@ -13,15 +13,21 @@ import android.widget.TextView;
 
 import com.codecademy.christiansoe.helper.DownloadImageTask;
 import com.codecademy.christiansoe.R;
+import com.codecademy.christiansoe.helper.RetrofitInitializer;
 import com.codecademy.christiansoe.model.Field;
 
 import java.util.HashMap;
 import java.util.Locale;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class FieldInformation extends AppCompatActivity {
 
     private Field field;
     private TextToSpeech textToSpeech;
+    private RetrofitInitializer retrofitInitializer = new RetrofitInitializer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +87,28 @@ public class FieldInformation extends AppCompatActivity {
             textToSpeech.shutdown();
         }
         super.onPause();
+    }
+
+    public void markField(View view){
+
+        field.setMarked(true);
+        Call<Field> call = retrofitInitializer.updateField(field);
+
+        call.enqueue(new Callback<Field>() {
+            @Override
+            public void onResponse(Call<Field> call, Response<Field> response) {
+
+                int a = 1;
+                a ++;
+
+            }
+
+            @Override
+            public void onFailure(Call<Field> call, Throwable t) {
+
+            }
+        });
+
     }
 
 }

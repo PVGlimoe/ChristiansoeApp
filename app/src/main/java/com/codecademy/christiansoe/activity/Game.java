@@ -99,7 +99,7 @@ public class Game extends AppCompatActivity {
     public void getUserFields(int bingoBoardId){
 
         //Uses the helper class retrofitInitializer, to make a api call, which returns the fields from the bingoBoard.
-        Call<List<Field>> call = retrofitInitializer.getFields(bingoBoard.getId());
+        Call<List<Field>> call = retrofitInitializer.getFields(bingoBoardId);
 
         //Makes the actually call, and checks if the call is valid.
         call.enqueue(new Callback<List<Field>>() {
@@ -144,9 +144,5 @@ public class Game extends AppCompatActivity {
 
            }
        });
-    }
-
-    public void markField(){
-
     }
 }

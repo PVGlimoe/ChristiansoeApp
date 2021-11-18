@@ -73,6 +73,16 @@ public class RetrofitInitializer {
         return backendAPI.createUserBingoBoard(userBingoBoard);
     }
 
+    public Call<Field> updateField(Field field){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://christiansoeapi.azurewebsites.net/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        BackendAPI backendAPI = retrofit.create(BackendAPI.class);
+        return backendAPI.updateField(field.getId(), field);
+    }
+
 
 
 
