@@ -3,6 +3,7 @@ package com.codecademy.christiansoe.helper;
 import com.codecademy.christiansoe.model.BingoBoard;
 import com.codecademy.christiansoe.model.Field;
 import com.codecademy.christiansoe.model.Map;
+import com.codecademy.christiansoe.model.UserBingoBoard;
 
 import java.util.List;
 
@@ -49,6 +50,32 @@ public class RetrofitInitializer {
         //OBS Change to dynamic mapId
         return backendAPI.getMaps(1);
     }
+
+    public Call<BingoBoard> getUserBingoBoards(int bingoBoardId, String userId){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://christiansoeapi.azurewebsites.net/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        BackendAPI backendAPI = retrofit.create(BackendAPI.class);
+
+        return backendAPI.getUserBingoBoards(bingoBoardId, userId);
+    }
+
+    public Call<UserBingoBoard> createUserBingoBoard(UserBingoBoard userBingoBoard){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://christiansoeapi.azurewebsites.net/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        BackendAPI backendAPI = retrofit.create(BackendAPI.class);
+        //OBS Change to dynamic mapId
+        return backendAPI.createUserBingoBoard(userBingoBoard);
+    }
+
+
+
+
 
 
 }

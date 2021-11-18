@@ -3,10 +3,13 @@ package com.codecademy.christiansoe.helper;
 import com.codecademy.christiansoe.model.BingoBoard;
 import com.codecademy.christiansoe.model.Field;
 import com.codecademy.christiansoe.model.Map;
+import com.codecademy.christiansoe.model.UserBingoBoard;
 
 import java.util.List;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -14,14 +17,22 @@ import retrofit2.http.Query;
 public interface BackendAPI {
 
     //Defines if it is a GET/POST method, and the endpoint to use (the rest of the url is specified in RetrofitInitializer)
-    @GET("fields")
-    //adds a query to the url, in this case https://.../fields?bingoboardid='bingoBoardId'
-    Call<List<Field>> getFields(@Query("bingoboardid") int bingoBoardId);
+    @GET("userfields")
+    //adds a query to the url, in this case https://christiansoeapi.azurewebsites.net/api/userFields?userbingoboardId=4
+    Call<List<Field>> getFields(@Query("userbingoboardid") int userBingoBoardId);
 
     @GET("bingoboards")
     Call<List<BingoBoard>> getBingoBoards();
 
     @GET("maps/{mapId}")
     Call<Map> getMaps(@Path(value = "mapId") int mapId);
+
+    @GET("userbingoboard")
+    Call<BingoBoard> getUserBingoBoards(@Query("bingoboardid") int bingoBoardId, @Query("userid") String userId);
+
+
+
+    @POST("userbingoboard")
+    Call<UserBingoBoard> createUserBingoBoard(@Body UserBingoBoard userBingoBoard);
 
 }
