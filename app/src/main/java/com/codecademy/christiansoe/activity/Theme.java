@@ -19,7 +19,7 @@ import com.codecademy.christiansoe.R;
 import com.codecademy.christiansoe.activity.Game;
 import com.codecademy.christiansoe.helper.RetrofitInitializer;
 import com.codecademy.christiansoe.model.BingoBoard;
-import com.google.android.gms.location.LocationServices;
+//import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.List;
