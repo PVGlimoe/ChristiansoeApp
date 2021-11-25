@@ -50,4 +50,7 @@ public interface BackendAPI {
     @GET("routes")
     Call<List<Route>> getRoutes(@Query("themeid") int themeId);
 
+    @GET("routes")
+    Call<List<Route>> getRoute(@Query("name") String routeName);
+
 }

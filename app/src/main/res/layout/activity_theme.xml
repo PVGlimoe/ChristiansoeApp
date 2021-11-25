@@ -67,7 +67,6 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="11dp"
         android:divider="#FAF0E6"
-        android:dividerHeight="18dp"
-        />
+        android:dividerHeight="18dp" />
 
 </RelativeLayout>

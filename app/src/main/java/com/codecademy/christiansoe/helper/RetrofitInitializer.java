@@ -111,6 +111,16 @@ public class RetrofitInitializer {
         return backendAPI.getRoutes(id);
     }
 
+    public Call<List<Route>> getRoute(String routeName) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://christiansoeapi.azurewebsites.net/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        BackendAPI backendAPI = retrofit.create(BackendAPI.class);
+        return backendAPI.getRoute(routeName);
+    }
+
 
 
 

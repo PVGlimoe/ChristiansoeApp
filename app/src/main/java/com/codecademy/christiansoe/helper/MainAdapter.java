@@ -1,5 +1,6 @@
 package com.codecademy.christiansoe.helper;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.Gravity;
@@ -10,6 +11,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.codecademy.christiansoe.activity.RouteActivity;
 import com.codecademy.christiansoe.model.Route;
 import com.codecademy.christiansoe.model.Theme;
 
@@ -116,6 +118,10 @@ public class MainAdapter extends BaseExpandableListAdapter {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
+
+                Intent intent = new Intent(view.getContext(), RouteActivity.class);
+                intent.putExtra("clickedRoute", sChild);
+                view.getContext().startActivity(intent);
 
             }
         });
