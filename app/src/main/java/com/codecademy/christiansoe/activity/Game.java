@@ -30,6 +30,7 @@ public class Game extends AppCompatActivity {
     private TextView bingoBoardTextView;
     private List<Field> fieldList = new ArrayList<>();
     private RetrofitInitializer retrofitInitializer = new RetrofitInitializer();
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +38,9 @@ public class Game extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         //Gets the unique phone/user id
-        String androidId = Settings.Secure.getString(getContentResolver(),
+        userId = Settings.Secure.getString(getContentResolver(),
                 Settings.Secure.ANDROID_ID);
+
 
         //Gets the bingoBoard object from the chosen theme on previous activity.
         Intent intent = getIntent();
@@ -49,7 +51,7 @@ public class Game extends AppCompatActivity {
         String name = bingoBoard.getName();
         bingoBoardTextView.setText(name);
 
-        Call<BingoBoard> userBingoBoardCall = retrofitInitializer.getUserBingoBoards(bingoBoard.getId(), androidId);
+        Call<BingoBoard> userBingoBoardCall = retrofitInitializer.getUserBingoBoards(bingoBoard.getId(), userId);
 
         userBingoBoardCall.enqueue(new Callback<BingoBoard>() {
             @Override
@@ -60,7 +62,7 @@ public class Game extends AppCompatActivity {
                     getUserFields(bingoBoardId);
 
                 } else if(response.code() == 404){
-                    UserBingoBoard userBingoBoard = new UserBingoBoard(false, bingoBoard.getId(), androidId);
+                    UserBingoBoard userBingoBoard = new UserBingoBoard(false, bingoBoard.getId(), userId);
                     createUserFields(userBingoBoard);
                 }
             }
@@ -89,6 +91,7 @@ public class Game extends AppCompatActivity {
         }
         //uses the position to get the chosen field.
         Field clickedField = fieldList.get(imageIndex);
+        clickedField.setUserId(userId);
 
         //Sends the user to the next activity with the field object that was clicked on.
         Intent intent = new Intent(this, FieldInformation.class);
