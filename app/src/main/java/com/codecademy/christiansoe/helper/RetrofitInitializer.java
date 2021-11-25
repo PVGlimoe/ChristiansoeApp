@@ -3,6 +3,8 @@ package com.codecademy.christiansoe.helper;
 import com.codecademy.christiansoe.model.BingoBoard;
 import com.codecademy.christiansoe.model.Field;
 import com.codecademy.christiansoe.model.Map;
+import com.codecademy.christiansoe.model.Route;
+import com.codecademy.christiansoe.model.Theme;
 import com.codecademy.christiansoe.model.UserBingoBoard;
 
 import java.util.List;
@@ -84,6 +86,30 @@ public class RetrofitInitializer {
     }
 
 
+    public Call<List<Theme>> getThemes() {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://christiansoeapi.azurewebsites.net/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        BackendAPI backendAPI = retrofit.create(BackendAPI.class);
+
+        return backendAPI.getThemes();
+    }
+
+
+    public Call<List<Route>> getRoutes(int id) {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://christiansoeapi.azurewebsites.net/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        BackendAPI backendAPI = retrofit.create(BackendAPI.class);
+
+        return backendAPI.getRoutes(id);
+    }
 
 
 

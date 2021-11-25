@@ -3,6 +3,8 @@ package com.codecademy.christiansoe.helper;
 import com.codecademy.christiansoe.model.BingoBoard;
 import com.codecademy.christiansoe.model.Field;
 import com.codecademy.christiansoe.model.Map;
+import com.codecademy.christiansoe.model.Route;
+import com.codecademy.christiansoe.model.Theme;
 import com.codecademy.christiansoe.model.UserBingoBoard;
 
 import java.util.List;
@@ -39,5 +41,13 @@ public interface BackendAPI {
 
     @PUT("userfields/{fieldId}")
     Call<Field> updateField(@Path(value = "fieldId") int fieldId, @Body Field field);
+
+
+    @GET("themes")
+    Call<List<Theme>> getThemes();
+
+
+    @GET("routes")
+    Call<List<Route>> getRoutes(@Query("themeid") int themeId);
 
 }
