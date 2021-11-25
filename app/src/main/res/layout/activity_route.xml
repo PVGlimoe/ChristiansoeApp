@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.RouteActivity">
+
+    <TextView
+        android:id="@+id/routeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/routeLength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/routeName" />
+
+    <TextView
+        android:id="@+id/routeHikingTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/routeLength" />
+
+    <TextView
+        android:id="@+id/routeDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="16dp"
+        android:maxLines="7"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pellentesque, tortor vitae ornare semper, ante sapien consectetur mi, ac viverra ante velit et mi. Proin at orci ut lorem porta cursus. Cras molestie ac nisi id porta. Pellentesque sit amet malesuada lorem. Suspendisse potenti. Donec vel tellus eu metus blandit auctor. Aliquam eget ullamcorper mi, sed eleifend elit. Proin laoreet rutrum libero at mattis. Aenean et lectus nec nisl placerat semper sit amet sit amet ligula. Nullam quis faucibus purus, eu volutpat nulla. Nunc mattis congue dolor pharetra ornare. Nulla bibendum, nisi convallis tincidunt dictum, leo massa varius mauris, vel blandit arcu risus sed ex. Duis sit amet dolor sed nulla iaculis elementum. Duis ullamcorper pharetra libero in sollicitudin. Etiam ex massa, sagittis eget sagittis et, tincidunt quis massa.  Aliquam condimentum magna quis neque sodales lobortis. Nam urna nulla, pharetra at tempus vitae, interdum eget velit. Suspendisse pharetra volutpat nulla non rhoncus. Donec vel faucibus risus. Mauris aliquam metus eu fermentum tincidunt. Suspendisse eu lectus non lacus ultrices vestibulum. Pellentesque id faucibus massa. Curabitur ac iaculis sapien, vitae hendrerit elit. Aliquam pretium lorem quis arcu egestas mattis. Praesent nulla nibh, semper in sodales non, pellentesque non nibh. In imperdiet sollicitudin mi, in posuere dui suscipit a. Proin fringilla odio et convallis facilisis. Ut nec turpis feugiat, posuere est at, finibus nisl. Suspendisse ut urna a purus mollis ultricies. Proin vitae dolor eget odio ultricies rhoncus. Curabitur orci odio, scelerisque at accumsan facilisis, aliquet et sem.  Donec in consequat dolor. Sed eu velit eu mi posuere consequat a sit amet massa. Integer sed rutrum arcu. Proin tincidunt dignissim lorem, vitae blandit eros sagittis vitae. Etiam feugiat ullamcorper finibus. Donec dui velit, bibendum sit amet tellus eget, congue sagittis tellus. Curabitur ac mi magna. Aenean fermentum dignissim tortor. Etiam ac facilisis lorem. Fusce urna ex, blandit id vulputate quis, fermentum placerat orci. Ut pulvinar sodales tristique."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/routeHikingTime" />
+
+    <Button
+        android:id="@+id/routeMap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Route"
+        tools:layout_editor_absoluteX="158dp"
+        tools:layout_editor_absoluteY="469dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

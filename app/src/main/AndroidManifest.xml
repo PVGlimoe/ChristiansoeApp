@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Christiansoe">
         <activity
+            android:name=".activity.RouteActivity"
+            android:exported="true" />
+        <activity
             android:name=".GpsTracker"
             android:exported="false" />
         <!--
