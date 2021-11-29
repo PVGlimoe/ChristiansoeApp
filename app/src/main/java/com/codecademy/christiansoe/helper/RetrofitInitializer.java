@@ -42,7 +42,7 @@ public class RetrofitInitializer {
         return backendAPI.getBingoBoards();
     }
 
-    public Call<Map> getMaps(){
+    public Call<Map> getMaps(int mapId){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://christiansoeapi.azurewebsites.net/api/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -50,7 +50,7 @@ public class RetrofitInitializer {
 
         BackendAPI backendAPI = retrofit.create(BackendAPI.class);
         //OBS Change to dynamic mapId
-        return backendAPI.getMaps(1);
+        return backendAPI.getMaps(mapId);
     }
 
     public Call<BingoBoard> getUserBingoBoards(int bingoBoardId, String userId){

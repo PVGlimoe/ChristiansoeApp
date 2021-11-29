@@ -23,11 +23,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void showMaps(View view){
-        Intent intent = new Intent(this, MapsActivity.class);
-        startActivity(intent);
-    }
-
     public void showGps(View view){
         Intent intent = new Intent(this, GpsTracker.class);
         startActivity(intent);

@@ -57,7 +57,10 @@
         android:id="@+id/routeMap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:onClick="showMaps"
         android:text="Show Route"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="469dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/routeDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>
