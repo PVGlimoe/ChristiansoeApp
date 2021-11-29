@@ -148,4 +148,8 @@ public class Game extends AppCompatActivity {
            }
        });
     }
+
+    public void showDistanceToFerry(View view){
+
+    }
 }

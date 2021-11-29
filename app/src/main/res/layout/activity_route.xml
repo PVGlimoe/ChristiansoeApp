@@ -59,8 +59,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:onClick="showMaps"
-        android:text="Show Route"
+        android:text="Se Ruten"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/routeDescription" />
+
+    <Button
+        android:id="@+id/selectRoute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:onClick="selectRoute"
+        android:text="Vælg Rute"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/routeMap" />
 </androidx.constraintlayout.widget.ConstraintLayout>

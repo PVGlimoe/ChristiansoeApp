@@ -26,6 +26,7 @@ public class RouteActivity extends AppCompatActivity {
     private TextView routeLength;
     private TextView routeHikingTime;
     private TextView routeDescription;
+    private BingoBoard chosenBingoBoard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,10 +69,38 @@ public class RouteActivity extends AppCompatActivity {
             }
         });
 
+        Call<List<BingoBoard>> bingoBoardCall = retrofitInitializer.getBingoBoards();
+
+        bingoBoardCall.enqueue(new Callback<List<BingoBoard>>() {
+            @Override
+            public void onResponse(Call<List<BingoBoard>> call, Response<List<BingoBoard>> response) {
+
+                if (!response.isSuccessful()) {
+                    return;
+                }
+                List<BingoBoard> bingoBoards = response.body();
+
+                //TO-DO Få fat i det valgte BingoBoard's id og sæt til chosenBingoBoard.
+                chosenBingoBoard = bingoBoards.get(0);
+            }
+
+            @Override
+            public void onFailure(Call<List<BingoBoard>> call, Throwable t) {
+
+            }
+        });
+
     }
 
     public void showMaps(View view){
         Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
+    }
+
+    public void selectRoute(View view){
+
+        Intent intent = new Intent(this, Game.class);
+        intent.putExtra("chosenBingoBoard", chosenBingoBoard);
         startActivity(intent);
     }
 }
