@@ -22,6 +22,9 @@ import retrofit2.Response;
 public class RouteActivity extends AppCompatActivity {
     private RetrofitInitializer retrofitInitializer = new RetrofitInitializer();
     private TextView routeTextView;
+    private TextView routeLength;
+    private TextView routeHikingTime;
+    private TextView routeDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,17 @@ public class RouteActivity extends AppCompatActivity {
                     List<Route> route = response.body();
                    routeTextView = findViewById(R.id.routeName);
                    routeTextView.setText(route.get(0).getName());
+
+                   routeLength = findViewById(R.id.routeLength);
+                   routeLength.setText(String.valueOf(route.get(0).getLength()));
+
+                    routeHikingTime = findViewById(R.id.routeHikingTime);
+                    routeHikingTime.setText(String.valueOf(route.get(0).getHikingTime()));
+
+                    routeDescription = findViewById(R.id.routeDescription);
+                    routeDescription.setText(route.get(0).getDescription());
+
+
 
                 }
             }
