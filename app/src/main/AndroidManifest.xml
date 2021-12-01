@@ -18,7 +18,9 @@
         android:theme="@style/Theme.Christiansoe">
         <activity
             android:name=".activity.WinnerScreen"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.NavBarWinner"
+            />
         <activity
             android:name=".activity.RouteActivity"
             android:exported="true" />
