@@ -38,7 +38,7 @@ public class GpsTracker extends AppCompatActivity {
     LocationRequest locationRequest;
     private Location currentLocation;
     private LocationCallback locationCallback;
-    Button getUpdates,removeUpdates;
+    Button getUpdates;
     TextView latitude2;
     TextView longitude2;
 
@@ -51,7 +51,6 @@ public class GpsTracker extends AppCompatActivity {
         createLocationRequest();
         settingsCheck();
         getUpdates = findViewById(R.id.getGps);
-        removeUpdates = findViewById(R.id.stopGps);
 
 
 
@@ -77,17 +76,7 @@ public class GpsTracker extends AppCompatActivity {
 
             }
         });
-        removeUpdates.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (ActivityCompat.checkSelfPermission(GpsTracker.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
-                    ActivityCompat.requestPermissions(GpsTracker.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_GRANT_PERMISSION);
-                    return;
-                }
-                if(locationCallback!=null)
-                    fusedLocationClient.removeLocationUpdates(locationCallback);
-            }
-        });
+
     }
 
     protected void createLocationRequest() {
