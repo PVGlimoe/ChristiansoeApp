@@ -7,6 +7,8 @@
     android:onClick="startGame"
     tools:context=".activity.MainActivity">
 
+
+
     <ImageView
         android:id="@+id/imageViewBoard2"
         android:layout_width="0dp"
