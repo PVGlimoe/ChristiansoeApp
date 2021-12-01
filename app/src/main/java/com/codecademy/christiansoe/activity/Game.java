@@ -3,6 +3,7 @@ package com.codecademy.christiansoe.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.text.HtmlCompat;
 
 import android.Manifest;
 import android.content.Intent;
@@ -13,6 +14,8 @@ import android.graphics.ColorMatrixColorFilter;
 import android.location.Location;
 import android.os.Looper;
 import android.provider.Settings;
+import android.text.Html;
+import android.text.SpannableStringBuilder;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -139,18 +142,12 @@ public class Game extends AppCompatActivity {
                 float estimatedWalkToFerry = distanceInMeters / speedMetersPerMinutes;
 
                 TextView distanceMeters = findViewById(R.id.distanceMeters);
-                distanceMeters.setText("Afstand til færgen - " + Math.round(distanceInMeters) + " meter");
+                distanceMeters.setText(HtmlCompat.fromHtml(String.format("Afstand til færgen: <b>%d</b> meter", Math.round(distanceInMeters)), HtmlCompat.FROM_HTML_MODE_COMPACT));
 
                 TextView distanceTime = findViewById(R.id.distanceTime);
-                distanceTime.setText("Afsæt " + Math.round(estimatedWalkToFerry) + " minutter");
-
-
-
-
-
+                distanceTime.setText(HtmlCompat.fromHtml(String.format("Afsæt <b>%d</b> minutter", Math.round( estimatedWalkToFerry ) ), HtmlCompat.FROM_HTML_MODE_COMPACT));
             }
         });
-
     }
 
     public void showFieldInfo(View view){
