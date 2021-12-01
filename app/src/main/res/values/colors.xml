@@ -8,4 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="bar">#FAF0E6</color>
+    <color name="beige">#FFFAF0E6</color>
+    <color name="darkGray">#B0635A5A</color>
+    <color name="lightGray">#28635A5A</color>
+    <color name="green">#FF669933</color>
 </resources>
