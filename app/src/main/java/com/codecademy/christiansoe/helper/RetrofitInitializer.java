@@ -64,7 +64,7 @@ public class RetrofitInitializer {
         return backendAPI.getMaps(mapId);
     }
 
-    public Call<BingoBoard> getUserBingoBoards(int bingoBoardId, String userId){
+    public Call<UserBingoBoard> getUserBingoBoards(int bingoBoardId, String userId){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://christiansoeapi.azurewebsites.net/api/")
                 .addConverterFactory(GsonConverterFactory.create())

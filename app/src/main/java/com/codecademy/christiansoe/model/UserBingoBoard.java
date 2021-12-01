@@ -1,6 +1,8 @@
 package com.codecademy.christiansoe.model;
 
-public class UserBingoBoard {
+import java.io.Serializable;
+
+public class UserBingoBoard implements Serializable {
 
     private int id;
     private boolean done;

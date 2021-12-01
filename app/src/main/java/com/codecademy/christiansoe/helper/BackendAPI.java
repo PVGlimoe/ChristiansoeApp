@@ -34,10 +34,10 @@ public interface BackendAPI {
     Call<Map> getMaps(@Path(value = "mapId") int mapId);
 
     @GET("userbingoboard")
-    Call<BingoBoard> getUserBingoBoards(@Query("bingoboardid") int bingoBoardId, @Query("userid") String userId);
+    Call<UserBingoBoard> getUserBingoBoards(@Query("bingoboardid") int bingoBoardId, @Query("userid") String userId);
 
-    @PUT("userfields/{fieldId}")
-    Call<UserBingoBoard> resetBingoBoard(@Path(value = "fieldId") int fieldId, @Body UserBingoBoard userBingoBoard);
+    @PUT("userbingoboard/{userbingoboardid}")
+    Call<UserBingoBoard> resetBingoBoard(@Path(value = "userbingoboardid") int userBingoBoardId, @Body UserBingoBoard userBingoBoard);
 
 
 

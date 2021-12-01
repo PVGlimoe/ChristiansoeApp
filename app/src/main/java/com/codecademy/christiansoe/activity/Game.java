@@ -88,15 +88,17 @@ public class Game extends AppCompatActivity {
         String name = bingoBoard.getName();
         bingoBoardTextView.setText(name);
 
-        Call<BingoBoard> userBingoBoardCall = retrofitInitializer.getUserBingoBoards(bingoBoard.getId(), userId);
+        Call<UserBingoBoard> userBingoBoardCall = retrofitInitializer.getUserBingoBoards(bingoBoard.getId(), userId);
 
-        userBingoBoardCall.enqueue(new Callback<BingoBoard>() {
+        userBingoBoardCall.enqueue(new Callback<UserBingoBoard>() {
             @Override
-            public void onResponse(Call<BingoBoard> call, Response<BingoBoard> response) {
+            public void onResponse(Call<UserBingoBoard> call, Response<UserBingoBoard> response) {
 
                 if(response.isSuccessful()){
-                    int bingoBoardId = response.body().getId();
-                    getUserFields(bingoBoardId);
+
+                    userBingoBoard = response.body();
+
+                    getUserFields(userBingoBoard.getId());
 
                 } else if(response.code() == 404){
                     userBingoBoard = new UserBingoBoard(false, bingoBoard.getId(), userId);
@@ -105,7 +107,7 @@ public class Game extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<BingoBoard> call, Throwable t) {
+            public void onFailure(Call<UserBingoBoard> call, Throwable t) {
 
             }
         });
@@ -238,6 +240,43 @@ public class Game extends AppCompatActivity {
        });
     }
 
+    public void winnerCheck(){
+
+        //This checks if all the fields in fieldList has isMarked set as true
+        boolean allSameName = fieldList.stream().allMatch(Field::isMarked);
+
+        if(allSameName){
+
+            userBingoBoard.setDone(true);
+
+            Call<UserBingoBoard> userBingoBoardCall = retrofitInitializer.resetBingoBoard(userBingoBoard);
+
+            userBingoBoardCall.enqueue(new Callback<UserBingoBoard>() {
+                @Override
+                public void onResponse(Call<UserBingoBoard> call, Response<UserBingoBoard> response) {
+
+                    if(response.isSuccessful()){
+                        gameWon();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<UserBingoBoard> call, Throwable t) {
+
+                }
+            });
+
+        }
+
+    }
+
+    public void gameWon(){
+
+        Intent intent = new Intent(this, WinnerScreen.class);
+        intent.putExtra("routeName", bingoBoard.getName());
+        startActivity(intent);
+
+    }
 
     // -------------------------------------------- GPS --------------------------------------------------
     protected void createLocationRequest() {
