@@ -52,6 +52,7 @@ import retrofit2.Response;
 public class Game extends AppCompatActivity {
 
     private BingoBoard bingoBoard;
+    private UserBingoBoard userBingoBoard;
     private TextView bingoBoardTextView;
     private List<Field> fieldList = new ArrayList<>();
     private RetrofitInitializer retrofitInitializer = new RetrofitInitializer();
@@ -98,7 +99,7 @@ public class Game extends AppCompatActivity {
                     getUserFields(bingoBoardId);
 
                 } else if(response.code() == 404){
-                    UserBingoBoard userBingoBoard = new UserBingoBoard(false, bingoBoard.getId(), userId);
+                    userBingoBoard = new UserBingoBoard(false, bingoBoard.getId(), userId);
                     createUserFields(userBingoBoard);
                 }
             }
@@ -203,10 +204,10 @@ public class Game extends AppCompatActivity {
                         imageView.setColorFilter(new ColorMatrixColorFilter(matrix));
                     }
 
-
-
                     counter++;
                 }
+
+                winnerCheck();
 
             }
 
@@ -215,6 +216,9 @@ public class Game extends AppCompatActivity {
 
             }
         });
+
+
+
 
     }
 

@@ -132,6 +132,20 @@ public class RetrofitInitializer {
         return backendAPI.getRoute(routeName);
     }
 
+    public Call<UserBingoBoard> resetBingoBoard(UserBingoBoard userBingoBoard) {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://christiansoeapi.azurewebsites.net/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        BackendAPI backendAPI = retrofit.create(BackendAPI.class);
+
+        return backendAPI.resetBingoBoard(userBingoBoard.getId() ,userBingoBoard);
+    }
+
+
+
 
 
 
