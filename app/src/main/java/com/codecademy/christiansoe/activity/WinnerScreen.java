@@ -3,7 +3,9 @@ package com.codecademy.christiansoe.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.codecademy.christiansoe.R;
@@ -14,6 +16,7 @@ public class WinnerScreen extends AppCompatActivity {
     TextView completedRouteName, winnerMessage;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,13 +25,18 @@ public class WinnerScreen extends AppCompatActivity {
         Intent intent = getIntent();
         String routeName = intent.getStringExtra("routeName");
 
+
+
         completedRouteName = findViewById(R.id.completedRouteName);
         completedRouteName.setText(routeName);
 
         winnerMessage = findViewById(R.id.winnerMessage);
         winnerMessage.setText("Tak for dit besøg, vi håber at du har hygget dig.\n\nHvis du har mere tid så kan du prøve en af de andre ruter");
 
+    }
 
-
+    public void backToStart(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
