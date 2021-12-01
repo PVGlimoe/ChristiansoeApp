@@ -3,10 +3,12 @@ package com.codecademy.christiansoe.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -46,6 +48,8 @@ public class FieldInformation extends AppCompatActivity {
         TextView fieldDescription = findViewById(R.id.fieldDescriptionTextView);
         fieldDescription.setText(field.getDescription());
         fieldDescription.setMovementMethod(ScrollingMovementMethod.getInstance());
+
+        setMarkedButtonText();
 
         ImageView imageView = findViewById(R.id.chosenFieldImageView);
 
@@ -91,15 +95,18 @@ public class FieldInformation extends AppCompatActivity {
 
     public void markField(View view){
 
-        field.setMarked(true);
+        if(field.isMarked()){
+            field.setMarked(false);
+        } else {
+            field.setMarked(true);
+        }
+        setMarkedButtonText();
+
         Call<Field> call = retrofitInitializer.updateField(field);
 
         call.enqueue(new Callback<Field>() {
             @Override
             public void onResponse(Call<Field> call, Response<Field> response) {
-
-                int a = 1;
-                a ++;
 
             }
 
@@ -108,6 +115,20 @@ public class FieldInformation extends AppCompatActivity {
 
             }
         });
+
+    }
+
+   public void setMarkedButtonText(){
+
+      Button markButton = findViewById(R.id.button5);
+
+      if(field.isMarked()){
+          markButton.setText("FJERN MARKERING");
+          markButton.setBackgroundColor(Color.parseColor("#FF0000"));
+      } else {
+          markButton.setText("FUNDET");
+      }
+
 
     }
 
