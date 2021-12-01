@@ -89,14 +89,8 @@ public class FieldInformation extends AppCompatActivity {
 
 
         if(field.getVideoUrl() != null) {
-            videoView = (VideoView) findViewById(R.id.videoView);
-
-            System.out.println("VIDEO URL" + field.getVideoUrl());
-
-            Uri uri = Uri.parse(field.getVideoUrl());
-            videoView.setMediaController(new MediaController(this));
-            videoView.setVideoURI(uri);
-            videoView.requestFocus();
+            videoView =  findViewById(R.id.videoView);
+            videoView.setVideoPath(field.getVideoUrl());
             videoView.start();
         }
 
