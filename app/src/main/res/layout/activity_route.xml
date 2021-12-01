@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/beige"
     tools:context=".activity.RouteActivity">
 
     <TextView
@@ -11,33 +12,78 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Christainasø's verdenshistorie"
+        android:textAlignment="center"
+        android:textStyle="bold"
 
-    <TextView
-        android:id="@+id/routeLength"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        android:text="TextView"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/routeName" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
-    <TextView
-        android:id="@+id/routeHikingTime"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/routeLengthLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/routeLength" />
+
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/routeName"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Længde: "
+            android:textSize="20sp"
+            />
+        <TextView
+            android:id="@+id/routeLength"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10"
+            android:textStyle="bold"
+            android:textSize="20sp"
+             />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text=" Kilometer"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/routeHikingTimeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20sp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/routeLengthLayout"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Varighed: "
+            android:textSize="20sp"
+            />
+        <TextView
+            android:id="@+id/routeHikingTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="50"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text=" Minutter"
+            />
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/routeDescription"
@@ -48,31 +94,41 @@
         android:layout_marginEnd="16dp"
         android:maxLines="7"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pellentesque, tortor vitae ornare semper, ante sapien consectetur mi, ac viverra ante velit et mi. Proin at orci ut lorem porta cursus. Cras molestie ac nisi id porta. Pellentesque sit amet malesuada lorem. Suspendisse potenti. Donec vel tellus eu metus blandit auctor. Aliquam eget ullamcorper mi, sed eleifend elit. Proin laoreet rutrum libero at mattis. Aenean et lectus nec nisl placerat semper sit amet sit amet ligula. Nullam quis faucibus purus, eu volutpat nulla. Nunc mattis congue dolor pharetra ornare. Nulla bibendum, nisi convallis tincidunt dictum, leo massa varius mauris, vel blandit arcu risus sed ex. Duis sit amet dolor sed nulla iaculis elementum. Duis ullamcorper pharetra libero in sollicitudin. Etiam ex massa, sagittis eget sagittis et, tincidunt quis massa.  Aliquam condimentum magna quis neque sodales lobortis. Nam urna nulla, pharetra at tempus vitae, interdum eget velit. Suspendisse pharetra volutpat nulla non rhoncus. Donec vel faucibus risus. Mauris aliquam metus eu fermentum tincidunt. Suspendisse eu lectus non lacus ultrices vestibulum. Pellentesque id faucibus massa. Curabitur ac iaculis sapien, vitae hendrerit elit. Aliquam pretium lorem quis arcu egestas mattis. Praesent nulla nibh, semper in sodales non, pellentesque non nibh. In imperdiet sollicitudin mi, in posuere dui suscipit a. Proin fringilla odio et convallis facilisis. Ut nec turpis feugiat, posuere est at, finibus nisl. Suspendisse ut urna a purus mollis ultricies. Proin vitae dolor eget odio ultricies rhoncus. Curabitur orci odio, scelerisque at accumsan facilisis, aliquet et sem.  Donec in consequat dolor. Sed eu velit eu mi posuere consequat a sit amet massa. Integer sed rutrum arcu. Proin tincidunt dignissim lorem, vitae blandit eros sagittis vitae. Etiam feugiat ullamcorper finibus. Donec dui velit, bibendum sit amet tellus eget, congue sagittis tellus. Curabitur ac mi magna. Aenean fermentum dignissim tortor. Etiam ac facilisis lorem. Fusce urna ex, blandit id vulputate quis, fermentum placerat orci. Ut pulvinar sodales tristique."
+        android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/routeHikingTime" />
+        app:layout_constraintTop_toBottomOf="@+id/routeHikingTimeLayout" />
 
-    <Button
-        android:id="@+id/routeMap"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:onClick="showMaps"
-        android:text="Se Ruten"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/routeDescription" />
 
-    <Button
-        android:id="@+id/selectRoute"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:onClick="selectRoute"
-        android:text="Vælg Rute"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/routeMap" />
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <Button
+            android:id="@+id/routeMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="20dp"
+            android:onClick="showMaps"
+            android:text="Se Ruten"
+            android:textSize="20sp"
+            android:backgroundTint="@color/darkGray"
+            />
+
+        <Button
+            android:id="@+id/selectRoute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="20dp"
+            android:onClick="selectRoute"
+            android:textSize="20sp"
+            android:backgroundTint="@color/green"
+            android:text="Vælg Rute"
+            />
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
