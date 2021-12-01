@@ -90,6 +90,7 @@ public class FieldInformation extends AppCompatActivity {
 
         if(field.getVideoUrl() != null) {
             videoView =  findViewById(R.id.videoView);
+            videoView.setVisibility(View.VISIBLE);
             videoView.setVideoPath(field.getVideoUrl());
             videoView.start();
         }
@@ -141,6 +142,7 @@ public class FieldInformation extends AppCompatActivity {
             markButton.setBackgroundColor(Color.parseColor("#FF0000"));
         } else {
             markButton.setText("FUNDET");
+            markButton.setBackgroundColor(Color.parseColor("#635A5A"));
         }
 
 
