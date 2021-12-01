@@ -27,6 +27,8 @@ public class RouteActivity extends AppCompatActivity {
     private TextView routeHikingTime;
     private TextView routeDescription;
     private BingoBoard chosenBingoBoard;
+    private int mapId;
+    private int bingoBoardId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,12 @@ public class RouteActivity extends AppCompatActivity {
                     routeDescription = findViewById(R.id.routeDescription);
                     routeDescription.setText(route.get(0).getDescription());
 
+                    bingoBoardId = route.get(0).getBingoBoardId();
+
+                    mapId = route.get(0).getMapId();
+
+                    bingoBoardCall();
+
 
 
                 }
@@ -69,23 +77,26 @@ public class RouteActivity extends AppCompatActivity {
             }
         });
 
-        Call<List<BingoBoard>> bingoBoardCall = retrofitInitializer.getBingoBoards();
+    }
 
-        bingoBoardCall.enqueue(new Callback<List<BingoBoard>>() {
+    public void bingoBoardCall(){
+
+        Call<BingoBoard> bingoBoardCall = retrofitInitializer.getBingoBoard(bingoBoardId);
+
+        bingoBoardCall.enqueue(new Callback<BingoBoard>() {
             @Override
-            public void onResponse(Call<List<BingoBoard>> call, Response<List<BingoBoard>> response) {
+            public void onResponse(Call<BingoBoard> call, Response<BingoBoard> response) {
 
                 if (!response.isSuccessful()) {
                     return;
                 }
-                List<BingoBoard> bingoBoards = response.body();
+                BingoBoard bingoBoard = response.body();
 
-                //TO-DO Få fat i det valgte BingoBoard's id og sæt til chosenBingoBoard.
-                chosenBingoBoard = bingoBoards.get(0);
+                chosenBingoBoard = bingoBoard;
             }
 
             @Override
-            public void onFailure(Call<List<BingoBoard>> call, Throwable t) {
+            public void onFailure(Call<BingoBoard> call, Throwable t) {
 
             }
         });
@@ -94,6 +105,7 @@ public class RouteActivity extends AppCompatActivity {
 
     public void showMaps(View view){
         Intent intent = new Intent(this, MapsActivity.class);
+        intent.putExtra("mapId", mapId);
         startActivity(intent);
     }
 

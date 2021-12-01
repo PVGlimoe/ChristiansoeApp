@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
@@ -38,13 +39,18 @@ import retrofit2.Response;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    private int mapId;
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
     private RetrofitInitializer retrofitInitializer = new RetrofitInitializer();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        mapId  = intent.getIntExtra("mapId", 0);
 
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -62,8 +68,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         List<LatLng> route = new ArrayList<>();
 
-        //TO DO GET DYNAMIC MAP ID !!
-        Call<Map> call = retrofitInitializer.getMaps(1);
+        Call<Map> call = retrofitInitializer.getMaps(mapId);
 
         call.enqueue(new Callback<Map>() {
             @Override

@@ -27,6 +27,9 @@ public interface BackendAPI {
     @GET("bingoboards")
     Call<List<BingoBoard>> getBingoBoards();
 
+    @GET("bingoboards/{bingoBoardId}")
+    Call<BingoBoard> getBingoBoard(@Path(value = "bingoBoardId") int bingoBoardId);
+
     @GET("maps/{mapId}")
     Call<Map> getMaps(@Path(value = "mapId") int mapId);
 

@@ -10,6 +10,7 @@ public class Route implements Serializable {
     private int hikingTime;
     private String description;
     private int bingoBoardId;
+    private int mapId;
 
 
 
@@ -67,6 +68,14 @@ public class Route implements Serializable {
 
     public void setBingoBoardId(int bingoBoardId) {
         this.bingoBoardId = bingoBoardId;
+    }
+
+    public int getMapId() {
+        return mapId;
+    }
+
+    public void setMapId(int mapId) {
+        this.mapId = mapId;
     }
 
     @Override
