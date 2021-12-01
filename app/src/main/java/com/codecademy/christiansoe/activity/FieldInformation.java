@@ -4,14 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.speech.tts.TextToSpeech;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.codecademy.christiansoe.helper.DownloadImageTask;
 import com.codecademy.christiansoe.R;
@@ -30,6 +34,7 @@ public class FieldInformation extends AppCompatActivity {
     private Field field;
     private TextToSpeech textToSpeech;
     private RetrofitInitializer retrofitInitializer = new RetrofitInitializer();
+    private VideoView videoView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +66,7 @@ public class FieldInformation extends AppCompatActivity {
         textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int i) {
-                if(i != TextToSpeech.ERROR){
+                if (i != TextToSpeech.ERROR) {
                     textToSpeech.setLanguage(new Locale("da-DK"));
                 }
 
@@ -82,20 +87,35 @@ public class FieldInformation extends AppCompatActivity {
             }
         });
 
+
+        if(field.getVideoUrl() != null) {
+            videoView = (VideoView) findViewById(R.id.videoView);
+
+            System.out.println("VIDEO URL" + field.getVideoUrl());
+
+            Uri uri = Uri.parse(field.getVideoUrl());
+            videoView.setMediaController(new MediaController(this));
+            videoView.setVideoURI(uri);
+            videoView.requestFocus();
+            videoView.start();
+        }
+
     }
+
+
     //Don't know if we need this.
     @Override
-    protected void onPause(){
-        if(textToSpeech != null){
+    protected void onPause() {
+        if (textToSpeech != null) {
             textToSpeech.stop();
             textToSpeech.shutdown();
         }
         super.onPause();
     }
 
-    public void markField(View view){
+    public void markField(View view) {
 
-        if(field.isMarked()){
+        if (field.isMarked()) {
             field.setMarked(false);
         } else {
             field.setMarked(true);
@@ -118,16 +138,16 @@ public class FieldInformation extends AppCompatActivity {
 
     }
 
-   public void setMarkedButtonText(){
+    public void setMarkedButtonText() {
 
-      Button markButton = findViewById(R.id.button5);
+        Button markButton = findViewById(R.id.button5);
 
-      if(field.isMarked()){
-          markButton.setText("FJERN MARKERING");
-          markButton.setBackgroundColor(Color.parseColor("#FF0000"));
-      } else {
-          markButton.setText("FUNDET");
-      }
+        if (field.isMarked()) {
+            markButton.setText("FJERN MARKERING");
+            markButton.setBackgroundColor(Color.parseColor("#FF0000"));
+        } else {
+            markButton.setText("FUNDET");
+        }
 
 
     }
