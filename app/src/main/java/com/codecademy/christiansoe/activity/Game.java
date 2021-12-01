@@ -3,6 +3,8 @@ package com.codecademy.christiansoe.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
@@ -32,9 +34,10 @@ public class Game extends AppCompatActivity {
     private RetrofitInitializer retrofitInitializer = new RetrofitInitializer();
     private String userId;
 
+    //Changed onCrate to onResume so that the page reload every time with the updated field information'.
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onResume() {
+        super.onResume();
         setContentView(R.layout.activity_game);
 
         //Gets the unique phone/user id
@@ -101,6 +104,9 @@ public class Game extends AppCompatActivity {
 
     public void getUserFields(int bingoBoardId){
 
+        ColorMatrix matrix = new ColorMatrix();
+        matrix.setSaturation(0);
+
         //Uses the helper class retrofitInitializer, to make a api call, which returns the fields from the bingoBoard.
         Call<List<Field>> call = retrofitInitializer.getFields(bingoBoardId);
 
@@ -120,6 +126,13 @@ public class Game extends AppCompatActivity {
                     int id = getResources().getIdentifier("imageViewBoard" + counter, "id", getPackageName());
                     ImageView imageView = findViewById(id);
                     new DownloadImageTask(imageView).execute((field.getPictureUrl()));
+
+                    if(field.isMarked()){
+                        imageView.setColorFilter(new ColorMatrixColorFilter(matrix));
+                    }
+
+
+
                     counter++;
                 }
 
