@@ -12,4 +12,5 @@
     <color name="darkGray">#B0635A5A</color>
     <color name="lightGray">#28635A5A</color>
     <color name="green">#FF669933</color>
+    <color name="transparent">#00000000</color>
 </resources>
