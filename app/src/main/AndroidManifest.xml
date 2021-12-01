@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Christiansoe">
         <activity
+            android:name=".activity.WinnerScreen"
+            android:exported="true" />
+        <activity
             android:name=".activity.RouteActivity"
             android:exported="true" />
         <activity
@@ -37,22 +40,20 @@
         <activity
             android:name=".activity.MapsActivity"
             android:exported="true"
-            android:theme="@style/Theme.NavBarMap"/>
+            android:theme="@style/Theme.NavBarMap" />
         <activity
             android:name=".activity.FieldInformation"
             android:exported="true" />
         <activity
             android:name=".activity.ThemeActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".activity.Game"
             android:exported="true" />
         <activity
             android:name=".activity.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.NavBar"
-            >
-
+            android:theme="@style/Theme.NavBar">
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

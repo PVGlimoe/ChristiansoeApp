@@ -36,6 +36,9 @@ public interface BackendAPI {
     @GET("userbingoboard")
     Call<BingoBoard> getUserBingoBoards(@Query("bingoboardid") int bingoBoardId, @Query("userid") String userId);
 
+    @PUT("userfields/{fieldId}")
+    Call<UserBingoBoard> resetBingoBoard(@Path(value = "fieldId") int fieldId, @Body UserBingoBoard userBingoBoard);
+
 
 
     @POST("userbingoboard")
