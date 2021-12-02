@@ -57,6 +57,7 @@ public class Game extends AppCompatActivity {
     private List<Field> fieldList = new ArrayList<>();
     private RetrofitInitializer retrofitInitializer = new RetrofitInitializer();
     private String userId;
+    private int mapId;
 
 
     //----------------------------------- GPS ---------------------------------------------
@@ -82,6 +83,7 @@ public class Game extends AppCompatActivity {
         //Gets the bingoBoard object from the chosen theme on previous activity.
         Intent intent = getIntent();
         bingoBoard = (BingoBoard) intent.getSerializableExtra("chosenBingoBoard");
+        mapId = intent.getIntExtra("mapId", 0);
 
         //Fill out information's from the BingoBoard to the activity display.
         bingoBoardTextView = findViewById(R.id.bingoBoardTextView);
@@ -276,6 +278,14 @@ public class Game extends AppCompatActivity {
         intent.putExtra("routeName", bingoBoard.getName());
         startActivity(intent);
 
+    }
+
+    public void showMap(View view){
+        Intent intent = new Intent(this, MapsActivity.class);
+        intent.putExtra("long", currentLocation.getLongitude());
+        intent.putExtra("lat", currentLocation.getLatitude());
+        intent.putExtra("mapId", mapId);
+        startActivity(intent);
     }
 
     // -------------------------------------------- GPS --------------------------------------------------

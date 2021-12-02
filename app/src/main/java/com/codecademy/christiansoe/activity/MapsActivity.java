@@ -43,6 +43,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
     private RetrofitInitializer retrofitInitializer = new RetrofitInitializer();
+    private double lng;
+    private double lat;
 
 
     @Override
@@ -51,6 +53,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Intent intent = getIntent();
         mapId  = intent.getIntExtra("mapId", 0);
+        lng = intent.getDoubleExtra("long", 0);
+        lat = intent.getDoubleExtra("lat", 0);
 
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -67,6 +71,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
         List<LatLng> route = new ArrayList<>();
+
+        if (lng != 0 && lat != 0){
+            LatLng yourPosition = new LatLng(lat, lng);
+            googleMap.addMarker(new MarkerOptions().position(yourPosition).title("You are here!"));
+        }
 
         Call<Map> call = retrofitInitializer.getMaps(mapId);
 

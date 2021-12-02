@@ -113,6 +113,7 @@ public class RouteActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, Game.class);
         intent.putExtra("chosenBingoBoard", chosenBingoBoard);
+        intent.putExtra("mapId", mapId);
         startActivity(intent);
     }
 }
