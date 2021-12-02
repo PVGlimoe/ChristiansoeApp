@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 
-import com.codecademy.christiansoe.GpsTracker;
 import com.codecademy.christiansoe.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,10 +25,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void showGps(View view){
-        Intent intent = new Intent(this, GpsTracker.class);
-        startActivity(intent);
-    }
 
 
 
